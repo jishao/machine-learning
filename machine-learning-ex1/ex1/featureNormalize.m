@@ -26,6 +26,18 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
 
+for i=1:size(X,2)
+    mu(i) = mean(X(:, i));
+end
+
+for i=1:size(X,2)
+    sigma(i) = mean(X(:, i));
+end
+
+mu_set = ones(size(X));
+for i=1:size(X,2);
+    mu_set(:,i) *= mu(i);
+end
 
 
 
