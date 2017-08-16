@@ -18,13 +18,17 @@ for iter = 1:num_iters
     %
 
 
+    
+    %{
+    n = size(X,2);
+    for i=1:n
+        theta(i) = theta(i) - alpha / m * sum((X*theta - y).*X(:,i));
+    end
+    %}
+    
 
-
-
-
-
-
-
+    gradJ = 1/(2*m) * 2 * X'*(X*theta - y);
+    theta = theta - alpha * gradJ;
 
 
     % ============================================================

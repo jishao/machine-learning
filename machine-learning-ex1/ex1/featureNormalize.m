@@ -30,20 +30,31 @@ for i=1:size(X,2)
     mu(i) = mean(X(:, i));
 end
 
+mu
+
+
 for i=1:size(X,2)
-    sigma(i) = mean(X(:, i));
+    sigma(i) = std(X(:, i));
 end
 
-mu_set = ones(size(X));
+sigma
+
+mean_set = [];
 for i=1:size(X,2);
-    mu_set(:,i) *= mu(i);
+    printf("i = %d\n", i);
+    mean_set = [mean_set, mu(i)*ones(size(X,1), 1)];
+end
+
+
+sigma_set = [];
+for i=1:size(X,2);
+    sigma_set = [sigma_set, (1/sigma(i))*ones(size(X,1), 1)];
 end
 
 
 
-
-
-
+X_norm = X_norm - mean_set;
+X_norm = X_norm.*sigma_set;
 
 
 % ============================================================
